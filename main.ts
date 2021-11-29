@@ -2,11 +2,13 @@ let time = 1500;
 let timePressed = 0;
 
 input.onButtonPressed(Button.B, () => {
+    basic.clearScreen();
     time = randint(1, 12) * 250;
     music.playTone(Note.C, time);
 });
 
 input.onButtonPressed(Button.A, () => {
+    basic.clearScreen();
     music.playTone(Note.C, time);
     basic.pause(250);
 });
