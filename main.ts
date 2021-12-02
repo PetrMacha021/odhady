@@ -19,8 +19,7 @@ input.onLogoEvent(TouchButtonEvent.Touched, () => {
 
 input.onLogoEvent(TouchButtonEvent.Released, () => {
     let timeDifference = Math.abs((control.millis() - timePressed) - time);
-    serial.writeLine(timeDifference.toString());
-    if (timeDifference <= 250) {
+    if (timeDifference <= time*0.15) {
         basic.showLeds(`
         . . . . .
         . . . . #
@@ -39,4 +38,7 @@ input.onLogoEvent(TouchButtonEvent.Released, () => {
         `)
         soundExpression.sad.playUntilDone();
     }
+    basic.pause(400);
+    basic.clearScreen();
+    basic.showNumber(timeDifference);
 });
